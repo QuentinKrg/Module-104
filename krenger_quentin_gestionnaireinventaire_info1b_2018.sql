@@ -18,6 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+
+-- Creation de la bd om_db_exemple_mod_104_2018
+DROP DATABASE IF EXISTS krenger_quentin_gestionnaireinventaire_info1b_2018;
+CREATE DATABASE IF NOT EXISTS krenger_quentin_gestionnaireinventaire_info1b_2018 COLLATE utf8_bin;
+USE krenger_quentin_gestionnaireinventaire_info1b_2018;
 --
 -- Base de données :  `krenger_quentin_gestionnaireinventaire_info1b_2018`
 --
@@ -88,10 +93,10 @@ CREATE TABLE IF NOT EXISTS `t_emplacement` (
 --
 
 INSERT INTO `t_emplacement` (`id_emplacement`, `Batiment_empl`, `NumBureau_empl`) VALUES
-(2, 'Provence', 1514),
-(3, 'Lausanne', 5849),
-(7, '', 1459),
-(8, '', 1111);
+(1, 'Provence', 1514),
+(2, 'Lausanne', 5849),
+(3, 'La chaux', 1459),
+(4, 'Marterey', 1111);
 
 -- --------------------------------------------------------
 
@@ -112,7 +117,8 @@ CREATE TABLE IF NOT EXISTS `t_garantie` (
 
 INSERT INTO `t_garantie` (`id_garantie`, `DateDeFin_gara`) VALUES
 (1, '2018-03-15'),
-(2, '2018-03-31');
+(2, '2018-03-31'),
+(3, '2019-03-09');
 
 -- --------------------------------------------------------
 
@@ -135,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `t_mail` (
 
 INSERT INTO `t_mail` (`id_mail`, `Mail_mail`, `FK_typeMail`) VALUES
 (1, 'quentinkrenger@gmail.com', 1),
-(2, 'quentinkrenger@loro.ch', 1);
+(2, 'quentin.krenger@loro.ch', 1);
 
 -- --------------------------------------------------------
 
