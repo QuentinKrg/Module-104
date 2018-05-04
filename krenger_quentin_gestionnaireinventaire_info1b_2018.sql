@@ -339,16 +339,15 @@ CREATE TABLE IF NOT EXISTS `t_typemail` (
   `Professionnel_typeE` varchar(45) DEFAULT NULL,
   `Autre_typeE` varchar(45) DEFAULT NULL,
   `FK_typePersoMail` int(11) NOT NULL,
-  PRIMARY KEY (`id_typeMail`),
-  KEY `fk_T_TypeMail_T_TypePersoMail1_idx` (`FK_typePersoMail`)
+  PRIMARY KEY (`id_typeMail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `t_typemail`
 --
 
-INSERT INTO `t_typemail` (`id_typeMail`, `Personnel_typeE`, `Professionnel_typeE`, `Autre_typeE`, `FK_typePersoMail`) VALUES
-(1, 'Personnel', 'Pro.', 'Autre', 1);
+INSERT INTO `t_typemail` (`id_typeMail`, `Personnel_typeE`, `Professionnel_typeE`, `Autre_typeE`) VALUES
+(1, 'Personnel', 'Pro.', 'Autre');
 
 -- --------------------------------------------------------
 
@@ -359,64 +358,20 @@ INSERT INTO `t_typemail` (`id_typeMail`, `Personnel_typeE`, `Professionnel_typeE
 DROP TABLE IF EXISTS `t_typenumero`;
 CREATE TABLE IF NOT EXISTS `t_typenumero` (
   `id_typeNumero` int(11) NOT NULL AUTO_INCREMENT,
-  `Mobile_typeN` binary(45) DEFAULT NULL,
-  `Domicile_typeN` binary(45) DEFAULT NULL,
-  `Professionel_typeN` varchar(45) DEFAULT NULL,
-  `Fax_typeN` varchar(45) DEFAULT NULL,
-  `Autre_typeN` varchar(45) DEFAULT NULL,
-  `T_TypeNumerocol` varchar(45) DEFAULT NULL,
-  `FK_typePersoNumero` int(11) NOT NULL,
-  PRIMARY KEY (`id_typeNumero`),
-  KEY `fk_T_TypeNumero_T_TypePersoNumero1_idx` (`FK_typePersoNumero`)
+  `Type_typeN` VARCHAR(78) DEFAULT NULL,
+  PRIMARY KEY (`id_typeNumero`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `t_typenumero`
 --
 
-INSERT INTO `t_typenumero` (`id_typeNumero`, `Mobile_typeN`, `Domicile_typeN`, `Professionel_typeN`, `Fax_typeN`, `Autre_typeN`, `T_TypeNumerocol`, `FK_typePersoNumero`) VALUES
-(3, 0x010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, NULL, NULL, NULL, NULL, NULL, 2),
-(4, 0x010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, NULL, NULL, NULL, NULL, NULL, 2);
+INSERT INTO `t_typenumero` (`id_typeNumero`, `Type_typeN`) VALUES
+(1,'NIQUE');
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `t_typepersomail`
---
 
-DROP TABLE IF EXISTS `t_typepersomail`;
-CREATE TABLE IF NOT EXISTS `t_typepersomail` (
-  `id_typePersoMail` int(11) NOT NULL AUTO_INCREMENT,
-  `Type_typePM` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id_typePersoMail`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `t_typepersomail`
---
-
-INSERT INTO `t_typepersomail` (`id_typePersoMail`, `Type_typePM`) VALUES
-(1, 'juL');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `t_typepersonumero`
---
-
-DROP TABLE IF EXISTS `t_typepersonumero`;
-CREATE TABLE IF NOT EXISTS `t_typepersonumero` (
-  `id_typePersoNumero` int(11) NOT NULL AUTO_INCREMENT,
-  `Type_typePN` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_typePersoNumero`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `t_typepersonumero`
---
-
-INSERT INTO `t_typepersonumero` (`id_typePersoNumero`, `Type_typePN`) VALUES
-(2, 'test');
 
 --
 -- Contraintes pour les tables déchargées
@@ -447,18 +402,8 @@ ALTER TABLE `t_numero`
 ALTER TABLE `t_personne`
   ADD CONSTRAINT `fk_T_Personne_T_Emplacement1` FOREIGN KEY (`FK_emplacement`) REFERENCES `t_emplacement` (`id_emplacement`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Contraintes pour la table `t_typemail`
---
-ALTER TABLE `t_typemail`
-  ADD CONSTRAINT `fk_T_TypeMail_T_TypePersoMail1` FOREIGN KEY (`FK_typePersoMail`) REFERENCES `t_typepersomail` (`id_typePersoMail`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Contraintes pour la table `t_typenumero`
---
-ALTER TABLE `t_typenumero`
-  ADD CONSTRAINT `fk_T_TypeNumero_T_TypePersoNumero1` FOREIGN KEY (`FK_typePersoNumero`) REFERENCES `t_typepersonumero` (`id_typePersoNumero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
