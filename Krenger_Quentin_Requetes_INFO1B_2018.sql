@@ -20,5 +20,6 @@ SELECT Batiment_empl FROM t_emplacement ORDER BY Batiment_empl COLLATE latin1_ge
 -- Requete pour lier deux tables ensembles --
 SELECT * FROM t_personne_article AS T1 
 INNER JOIN t_personne AS T2 ON T2.id_personne = T1.FK_personne 
-INNER JOIN t_article AS T3 ON T3.id_article = T1.FK_Article;
+INNER JOIN t_article AS T3 ON T3.id_article = T1.FK_Article
+WHERE id_personne = 1;
 
