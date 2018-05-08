@@ -50,6 +50,26 @@ CREATE TABLE IF NOT EXISTS `t_personne_numero` (
 	`FK_numero` INT(11) NOT NULL
 )	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- Contenu de la table `t_personne_numero`
+INSERT INTO `t_personne_numero` (`id_personne_numero`,`FK_personne`,`FK_numero`) VALUES
+(1,1,1),
+(1,1,7),
+(1,4,1),
+(1,5,3),
+(1,4,6),
+(1,9,2),
+(1,7,5),
+(1,6,13),
+(1,12,15),
+(1,15,16),
+(1,19,7),
+(1,11,10),
+(1,12,11),
+(1,8,12),
+(1,4,15),
+(1,3,5),
+(1,2,1);
+
 -- ---------------------------------------------------------------------
 
 -- Structure de la table `t_numero`
@@ -124,6 +144,27 @@ CREATE TABLE IF NOT EXISTS `t_personne_mail` (
 	`FK_mail` INT(11) NOT NULL
 ) 	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- Contenu de la table `t_personne_mail`
+
+INSERT INTO `t_personne_mail` (`id_personne_mail`,`FK_personne`,`FK_mail`) VALUES
+(1,1,1),
+(1,1,7),
+(1,4,1),
+(1,5,3),
+(1,4,6),
+(1,9,2),
+(1,7,5),
+(1,6,13),
+(1,12,15),
+(1,15,16),
+(1,19,7),
+(1,11,10),
+(1,12,11),
+(1,8,12),
+(1,4,15),
+(1,3,5),
+(1,2,1);
+
 -- ---------------------------------------------------------------------
 
 -- Structure de la table `t_mail`
@@ -192,6 +233,27 @@ CREATE TABLE IF NOT EXISTS `t_personne_article` (
 	`FK_personne` INT(11) NOT NULL,
 	`FK_Article` INT(11) NOT NULL
 ) 	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- Contenu de la table `t_personne_article`
+
+INSERT INTO `t_personne_article` (`id_personne_article`, `FK_personne`, `FK_article`) VALUES
+(1,1,1),
+(1,1,2),
+(1,2,8),
+(1,3,3),
+(1,4,6),
+(1,5,2),
+(1,6,5),
+(1,7,13),
+(1,8,22),
+(1,9,16),
+(1,10,7),
+(1,11,10),
+(1,12,11),
+(1,13,12),
+(1,14,15),
+(1,16,5),
+(1,17,18);
 
 -- ---------------------------------------------------------------------
 
@@ -329,16 +391,6 @@ INSERT INTO `t_emplacement` (`id_emplacement`,`Batiment_empl`) VALUES
 
 -- ---------------------------------------------------------------------
 
---	Structure de la table `t_article_modele`
-
-/*CREATE TABLE IF NOT EXISTS `t_article_modele` (
-	`id_article_modele` INT(11) NOT NULL,
-	`FK_modele` INT(11) NOT NULL,
-	`FK_article` INT(11)NOT NULL
-) 	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;*/
-
--- ---------------------------------------------------------------------
-
 -- Structure de la table `t_modele`
 	
 CREATE TABLE IF NOT EXISTS `t_modele` (
@@ -467,12 +519,6 @@ ALTER TABLE `t_article`
 ALTER TABLE `t_emplacement`
 	ADD PRIMARY KEY (`id_emplacement`);
 	
--- Index pour la table `t_article_modele`
-
-/*ALTER TABLE `t_article_modele`
-	ADD PRIMARY KEY (`id_article_modele`), 
-	ADD KEY `FK_modele` (`FK_modele`),
-	ADD KEY `FK_article` (`FK_article`);*/
 	
 -- Index pour la table `t_modele`
 
@@ -556,13 +602,6 @@ ALTER TABLE `t_article`
 
 ALTER TABLE `t_emplacement`
 	MODIFY `id_emplacement` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-	
---
--- AUTO_INCREMENT pour la table `t_article_modele`
---
-
-/*ALTER TABLE `t_article_modele`
-	MODIFY `id_article_modele` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;*/
 	
 --
 -- AUTO_INCREMENT pour la table `t_modele`
