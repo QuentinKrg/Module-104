@@ -3,7 +3,9 @@
 -- Merveilleux autheur : Quentin Krenger 
 
 -- Creation de la db Krenger_Quentin_Gestionnaire_d_inventaire_INFO1B_2018C
+DROP DATABASE IF EXISTS Krenger_Quentin_Gestionnaire_d_inventaire_INFO1B_2018;
 CREATE DATABASE IF NOT EXISTS Krenger_Quentin_Gestionnaire_d_inventaire_INFO1B_2018;
+USE Krenger_Quentin_Gestionnaire_d_inventaire_INFO1B_2018;
 
 -- Structure de `t_personne`
 
@@ -53,22 +55,22 @@ CREATE TABLE IF NOT EXISTS `t_personne_numero` (
 -- Contenu de la table `t_personne_numero`
 INSERT INTO `t_personne_numero` (`id_personne_numero`,`FK_personne`,`FK_numero`) VALUES
 (1,1,1),
-(1,1,7),
-(1,4,1),
-(1,5,3),
-(1,4,6),
-(1,9,2),
-(1,7,5),
-(1,6,13),
-(1,12,15),
-(1,15,16),
-(1,19,7),
-(1,11,10),
-(1,12,11),
-(1,8,12),
-(1,4,15),
-(1,3,5),
-(1,2,1);
+(2,1,7),
+(3,4,1),
+(4,5,3),
+(5,4,6),
+(6,9,2),
+(7,7,5),
+(8,6,13),
+(9,12,15),
+(10,15,16),
+(11,19,7),
+(12,11,10),
+(13,12,11),
+(14,8,12),
+(15,4,15),
+(16,3,5),
+(17,2,1);
 
 -- ---------------------------------------------------------------------
 
@@ -148,22 +150,22 @@ CREATE TABLE IF NOT EXISTS `t_personne_mail` (
 
 INSERT INTO `t_personne_mail` (`id_personne_mail`,`FK_personne`,`FK_mail`) VALUES
 (1,1,1),
-(1,1,7),
-(1,4,1),
-(1,5,3),
-(1,4,6),
-(1,9,2),
-(1,7,5),
-(1,6,13),
-(1,12,15),
-(1,15,16),
-(1,19,7),
-(1,11,10),
-(1,12,11),
-(1,8,12),
-(1,4,15),
-(1,3,5),
-(1,2,1);
+(2,2,7),
+(3,4,1),
+(4,5,3),
+(5,4,6),
+(6,9,2),
+(7,7,5),
+(8,6,13),
+(9,12,15),
+(10,15,16),
+(11,19,7),
+(12,11,10),
+(13,12,11),
+(14,8,12),
+(15,4,15),
+(16,3,5),
+(17,2,1);
 
 -- ---------------------------------------------------------------------
 
@@ -238,22 +240,22 @@ CREATE TABLE IF NOT EXISTS `t_personne_article` (
 
 INSERT INTO `t_personne_article` (`id_personne_article`, `FK_personne`, `FK_article`) VALUES
 (1,1,1),
-(1,1,2),
-(1,2,8),
-(1,3,3),
-(1,4,6),
-(1,5,2),
-(1,6,5),
-(1,7,13),
-(1,8,22),
-(1,9,16),
-(1,10,7),
-(1,11,10),
-(1,12,11),
-(1,13,12),
-(1,14,15),
-(1,16,5),
-(1,17,18);
+(2,1,2),
+(3,2,8),
+(4,3,3),
+(5,4,6),
+(6,5,2),
+(7,6,5),
+(8,7,13),
+(9,8,22),
+(10,9,16),
+(11,10,7),
+(12,11,10),
+(13,12,11),
+(14,13,12),
+(15,14,15),
+(16,16,5),
+(17,17,18);
 
 -- ---------------------------------------------------------------------
 
@@ -545,7 +547,7 @@ ALTER TABLE `t_personne`
 --
 
 ALTER TABLE `t_personne_numero`
-	MODIFY `id_personne_numero` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+	MODIFY `id_personne_numero` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 	
 --
 -- AUTO_INCREMENT pour la table `t_numero`
@@ -559,14 +561,14 @@ ALTER TABLE `t_numero`
 --
 
 ALTER TABLE `t_typeNumero`
-	MODIFY `id_typeNumero` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+	MODIFY `id_typeNumero` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 	
 --
 -- AUTO_INCREMENT pour la table `t_personne_mail`
 --
 
 ALTER TABLE `t_personne_mail`
-	MODIFY `id_personne_mail` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+	MODIFY `id_personne_mail` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 	
 --
 -- AUTO_INCREMENT pour la table `t_mail`
@@ -587,7 +589,7 @@ ALTER TABLE `t_typeMail`
 --
 
 ALTER TABLE `t_personne_article`
-	MODIFY `id_personne_article` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+	MODIFY `id_personne_article` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 	
 --
 -- AUTO_INCREMENT pour la table `t_article`

@@ -1,4 +1,28 @@
 --
+-- Exemple requetes avec tous les opérateurs
+--
+
+SELECT * FROM t_article WHERE Type_arti LIKE 'Ecran' ORDER BY `Type_arti` DESC;
+SELECT * FROM t_article WHERE Type_arti LIKE '%Ecran%' ORDER BY `Type_arti` DESC;
+SELECT * FROM t_article WHERE Type_arti NOT LIKE 'Ecran' ORDER BY `Type_arti` DESC;
+SELECT * FROM t_article WHERE Garantie_arti = "26.01.19" ORDER BY `Garantie_arti` DESC;
+SELECT * FROM t_article WHERE Garantie_arti != "26.01.19" ORDER BY `Garantie_arti` DESC;
+SELECT * FROM t_article WHERE Type_arti REGEXP 'an' ORDER BY `Type_arti` DESC;
+SELECT * FROM t_article WHERE Type_arti NOT REGEXP 'an' ORDER BY `Type_arti` DESC;
+SELECT * FROM t_article WHERE id_article IN (6, 15) ORDER BY `id_article` DESC;
+SELECT * FROM t_article WHERE id_article NOT IN (6, 15) ORDER BY `id_article` DESC;
+SELECT * FROM t_article WHERE id_article BETWEEN 6 AND 15 ORDER BY `id_article` DESC;
+SELECT * FROM t_article WHERE id_article NOT BETWEEN 6 AND 15 ORDER BY `id_article` DESC;
+SELECT * FROM t_article WHERE Type_arti IS NULL ORDER BY `Type_arti` DESC;
+SELECT * FROM t_article WHERE Type_arti IS NOT NULL ORDER BY `Type_arti` DESC;
+
+--
+-- Requete pour changer la collation
+--
+
+SELECT Type_arti FROM t_article ORDER BY Type_arti COLLATE latin1_german2_ci;
+
+--
 -- Selection des données voulues depuis `t_personne` jusqu'à `t_typeMail` et `t_typeNumero`
 --
 
