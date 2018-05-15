@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `t_personne` (
 
 -- Contenu de la table `t_personne`
 
-INSERT INTO `t_personne`(`id_personne`,`Nom_pers`,`Prenom_pers`,`User_pers`) VALUES
+INSERT INTO `t_personne`(`id_personne`,`Prenom_pers`,`Nom_pers`,`User_pers`) VALUES
 (1,"Xavier","Mcguire","qfjs2"),
 (2,"Chadwick","Glass","pfth3"),
 (3,"Fuller","Cotton","ulcn4"),
@@ -167,6 +167,7 @@ INSERT INTO `t_personne_mail` (`id_personne_mail`,`FK_personne`,`FK_mail`) VALUE
 (16,3,5),
 (17,2,1);
 
+
 -- ---------------------------------------------------------------------
 
 -- Structure de la table `t_mail`
@@ -264,116 +265,66 @@ INSERT INTO `t_personne_article` (`id_personne_article`, `FK_personne`, `FK_arti
 CREATE TABLE IF NOT EXISTS `t_article` (
 	`id_article` INT(11) NOT NULL,
 	`NumDeSerie_arti` VARCHAR(62) COLLATE utf8_bin NOT NULL,
-	`Type_arti` VARCHAR(50) COLLATE utf8_bin NOT NULL,
 	`Garantie_arti` DATE NOT NULL,
+	`FK_typeArticle` INT(11) NOT NULL,
 	`FK_emplacement` INT(11) NOT NULL,
 	`FK_modele` INT (11) NOT NULL
 )	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Contenu de la table `t_article`
 
-INSERT INTO `t_article` (`id_article`,`NumDeSerie_arti`,`Type_arti`,`Garantie_arti`,`FK_emplacement`,`FK_modele`) VALUES
-(1,"Z3d95DB8276U","Clavier et souris","09.03.19",3,1),
-(2,"N9w16EN3918F","Ordinateur Portable","12.05.17",1,2),
-(3,"J3z72YD4060A","Clavier et souris","15.07.18",2,3),
-(4,"F3l69NJ4091S","Ordinateur Portable","15.12.18",4,4),
-(5,"O5x35LT9497F","Ordinateur Portable","21.07.18",4,5),
-(6,"J5a08NZ0838V","Ordinateur Fixe","18.02.18",4,6),
-(7,"E8e51YP8059G","Clavier et souris","29.08.17",2,7),
-(8,"B7s57QI8635X","Clavier et souris","29.10.18",2,8),
-(9,"R7u87XY7379H","Ecran","15.03.18",1,9),
-(10,"X4y70AE2068C","Ordinateur Fixe","17.12.18",2,10),
-(11,"A2t84XF1190X","","19.05.17",2,11),
-(12,"Q6h68FP9275N","Ordinateur Portable","05.11.18",4,12),
-(13,"K1y40AC4019N","Clavier et souris","24.07.18",1,13),
-(14,"U3w57IM6096F","Ordinateur Portable","12.07.17",2,14),
-(15,"O6o40SC4040W","Ecran","29.04.19",1,15),
-(16,"S5a08DE9233F","Clavier et souris","02.09.18",2,16),
-(17,"G7v29MY6850J","","20.01.18",4,17),
-(18,"G9y91BT0869Q","Ordinateur Fixe","08.12.18",4,17),
-(19,"B3m50ME4395O","","17.01.19",3,18),
-(20,"Y6f60QY5312W","Ordinateur Portable","24.11.17",2,14),
-(21,"S7x70AM2181W","Ecran","25.06.17",4,5),
-(22,"L9q99MR2545B","Ordinateur Fixe","03.05.18",3,30),
-(23,"Y6s16SN8455Y","Clavier et souris","02.05.19",2,28),
-(24,"M7w23OM0623E","Ecran","03.09.18",3,27),
-(25,"F6b22PT7926M","Clavier et souris","09.06.17",2,14),
-(26,"Z3g09PP6545U","Ordinateur Fixe","02.06.18",1,26),
-(27,"A0c55YR5600E","Ecran","19.01.18",2,29),
-(28,"Y6p03DG4550X","Clavier et souris","08.04.19",4,28),
-(29,"M8q28OV0262O","","02.01.18",3,27),
-(30,"T6u22JT9202Y","","20.11.18",2,22),
-(31,"L2m50IU5083B","Ordinateur Fixe","05.04.19",3,21),
-(32,"C4z65VW2265N","Ecran","01.01.18",3,23),
-(33,"L5c87RJ6980Y","Ordinateur Fixe","30.03.18",3,19),
-(34,"F8x21OA2579E","Ecran","16.11.18",4,20),
-(35,"U7w78GM4686Z","Ecran","10.11.18",2,1),
-(36,"E1f89VR5115L","Ordinateur Portable","26.10.18",2,2),
-(37,"P5a50PT4710Q","Ordinateur Fixe","17.11.17",1,3),
-(38,"W3t95VS6749P","","24.02.18",3,5),
-(39,"X0i63SU3393E","Ordinateur Portable","09.11.18",3,25),
-(40,"B4u78GA2745M","Ordinateur Portable","06.07.18",3,30),
-(41,"F2l14GQ0033N","","22.06.18",2,30),
-(42,"C5t64UC3547J","Ordinateur Fixe","03.10.17",4,02),
-(43,"P7n94SC2423U","Ordinateur Fixe","06.12.17",2,14),
-(44,"S6j12JG7169T","Clavier et souris","19.05.17",4,10),
-(45,"E6a45NY4796R","Ordinateur Portable","21.07.17",1,17),
-(46,"S3p10TW5757L","Clavier et souris","15.05.17",1,28),
-(47,"D2n47ME8556O","Ordinateur Fixe","14.09.18",4,30),
-(48,"C5o77RQ1216C","Ordinateur Portable","17.11.18",3,23),
-(49,"V1s15NH1508L","Ecran","13.08.17",4,21),
-(50,"X0f21UG5654H","Ordinateur Portable","18.01.18",4,11),
-(51,"X9g53CY0213I","Ordinateur Fixe","08.09.18",4,16),
-(52,"H5g35ZK2050K","Ordinateur Portable","14.04.18",3,19),
-(53,"O1m50FC3300G","Clavier et souris","09.07.17",4,13),
-(54,"X8b29OH3548S","","10.04.19",4,3),
-(55,"J7u03IF4138B","Ecran","01.06.17",3,2),
-(56,"T4a75IU3391X","Clavier et souris","14.12.17",3,9),
-(57,"R7f04ER8207R","Clavier et souris","24.09.17",4,8),
-(58,"P4v52ZV7311G","Ecran","15.07.18",2,7),
-(59,"W8y92JD0754Z","Ecran","25.12.18",3,22),
-(60,"H6h57CR6766F","Ordinateur Fixe","18.02.18",1,26),
-(61,"Y6d00XR3413B","Clavier et souris","01.05.18",2,25),
-(62,"V6w89IE8777R","","18.11.18",1,27),
-(63,"Q3c82ST8855F","Ordinateur Portable","07.06.18",3,22),
-(64,"F6o93JO3285D","Ordinateur Fixe","11.05.17",2,24),
-(65,"C6k93JU0737U","Ordinateur Portable","09.12.18",3,21),
-(66,"C9h82SX5887Z","","22.02.19",3,12),
-(67,"X1l02PB0021H","Ordinateur Fixe","18.11.17",4,14),
-(68,"E9n35TB9842C","Ordinateur Fixe","10.08.17",2,28),
-(69,"J2p86IP1688C","Ordinateur Fixe","05.10.17",1,29),
-(70,"C3v24RD3071M","Ordinateur Portable","03.09.18",3,27),
-(71,"X6e72OU0916I","Ecran","16.03.18",3,22),
-(72,"Y8h68AE6260G","Ordinateur Portable","03.11.17",4,27),
-(73,"J2m74YO8305S","Ordinateur Portable","15.02.19",4,25),
-(74,"P7h34ZY2743Z","Ecran","06.04.18",2,23),
-(75,"O5l02HN9841H","Ecran","24.09.17",1,21),
-(76,"A0g03EL9102D","Ordinateur Portable","19.06.17",2,27),
-(77,"X5b56XJ0907B","Ordinateur Fixe","17.12.18",2,22),
-(78,"T2s78SD3019D","","26.01.19",1,12),
-(79,"F1o48UW4631S","Ordinateur Portable","15.05.17",2,12),
-(80,"D4f72XX7303K","Ordinateur Fixe","14.02.19",4,12),
-(81,"N7s23CE9701E","Ordinateur Fixe","06.11.17",4,2),
-(82,"S7m53YZ7287T","Clavier et souris","25.04.19",3,1),
-(83,"X8l06GD8842G","Ordinateur Portable","15.06.18",2,1),
-(84,"G4m26UP5236F","Clavier et souris","28.02.18",4,1),
-(85,"E6r77QV5157M","Clavier et souris","16.05.17",4,1),
-(86,"I4k45UP5174X","","13.05.18",4,1),
-(87,"Y3y59OY4061M","Clavier et souris","30.04.18",4,3),
-(88,"B9b25DW5547R","Ordinateur Portable","01.06.17",2,3),
-(89,"M6v29TY3406H","Clavier et souris","15.10.17",3,3),
-(90,"P5u82WP5149Z","Ecran","01.10.18",3,3),
-(91,"L4k57AQ8012F","Ordinateur Fixe","20.12.17",4,3),
-(92,"K8a53KK5814P","Ordinateur Portable","16.12.18",1,3),
-(93,"B7b55EY9715X","","12.02.19",2,3),
-(94,"R8z31BR2504Z","Ecran","09.07.17",4,3),
-(95,"B9h71KY2473O","Clavier et souris","16.11.18",3,8),
-(96,"V9t70RV0047V","Clavier et souris","23.12.17",4,8),
-(97,"U5h83ZC1179B","","26.07.17",3,27),
-(98,"O9g38WY2692N","Ecran","24.08.18",2,28),
-(99,"L0q83IH0439R","","02.02.18",1,7),
-(100,"K5p02WE9438V","Ecran","06.07.18",3,9);
+INSERT INTO `t_article` (`id_article`,`NumDeSerie_arti`,`Garantie_arti`,`FK_typeArticle`,`FK_emplacement`,`FK_modele`) VALUES
+(1,"Z3d95DB8276U","09.03.19",1,3,1),
+(2,"N9w16EN3918F","12.05.17",2,1,2),
+(3,"J3z72YD4060A","15.07.18",3,2,3),
+(4,"F3l69NJ4091S","15.12.18",4,4,4),
+(5,"O5x35LT9497F","21.07.18",5,4,5),
+(6,"J5a08NZ0838V","18.02.18",1,4,6),
+(7,"E8e51YP8059G","29.08.17",2,2,7),
+(8,"B7s57QI8635X","29.10.18",3,2,8),
+(9,"R7u87XY7379H","15.03.18",4,1,9),
+(10,"X4y70AE2068C","17.12.18",5,2,10),
+(11,"A2t84XF1190X","19.05.17",1,2,11),
+(12,"Q6h68FP9275N","05.11.18",2,4,12),
+(13,"K1y40AC4019N","24.07.18",3,1,13),
+(14,"U3w57IM6096F","12.07.17",4,2,14),
+(15,"O6o40SC4040W","29.04.19",5,1,15),
+(16,"S5a08DE9233F","02.09.18",1,2,16),
+(17,"G7v29MY6850J","20.01.18",2,4,17),
+(18,"G9y91BT0869Q","08.12.18",3,4,18),
+(19,"B3m50ME4395O","17.01.19",4,3,19),
+(20,"Y6f60QY5312W","24.11.17",5,2,20),
+(21,"S7x70AM2181W","25.06.17",1,4,21),
+(22,"L9q99MR2545B","03.05.18",2,3,22),
+(23,"Y6s16SN8455Y","02.05.19",3,2,23),
+(24,"M7w23OM0623E","03.09.18",4,3,24),
+(25,"F6b22PT7926M","09.06.17",1,2,25),
+(26,"Z3g09PP6545U","02.06.18",2,1,26),
+(27,"A0c55YR5600E","19.01.18",1,2,27),
+(28,"Y6p03DG4550X","08.04.19",3,4,28),
+(29,"M8q28OV0262O","02.01.18",4,3,29),
+(30,"T6u22JT9202Y","20.11.18",1,2,30),
+(31,"L2m50IU5083B","05.04.19",5,3,31);
 
+
+-- ---------------------------------------------------------------------
+
+-- Structure de la table `t_typeArticle`
+
+CREATE TABLE IF NOT EXISTS `t_typeArticle` (
+	`id_typeArticle` int(11) NOT NULL,
+	`Type_typeA` VARCHAR(50) COLLATE utf8_bin NOT NULL
+) 	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+-- Contenu de la table `t_typeArticle`
+
+INSERT INTO `t_typeArticle` (`id_typeArticle`, `Type_typeA`) VALUES
+(1,"Ecran"),
+(2,"Ordinateur portable"),
+(3,"Ordinateur fixe"),
+(4,"Clavier"),
+(5,"Souris");
 -- ---------------------------------------------------------------------
 
 -- Structure de la table `t_emplacement`
@@ -513,8 +464,14 @@ ALTER TABLE `t_personne_article`
 
 ALTER TABLE `t_article`
 	ADD PRIMARY KEY (`id_article`),
+	ADD KEY `FK_typeArticle` (`FK_typeArticle`),
 	ADD KEY `FK_emplacement` (`FK_emplacement`),
 	ADD KEY `FK_modele` (`FK_modele`);
+	
+-- Index pour la talbe `t_typeArticle`
+
+ALTER TABLE `t_typeArticle`
+	ADD PRIMARY KEY (`id_typeArticle`);
 	
 -- Index pour la table `t_emplacement`
 
@@ -596,7 +553,14 @@ ALTER TABLE `t_personne_article`
 --
 
 ALTER TABLE `t_article`
-	MODIFY `id_article` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+	MODIFY `id_article` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+	
+--
+-- AUTO_INCREMENT pour la table `t_typeArticle`
+--
+
+ALTER TABLE `t_typeArticle`
+	MODIFY `id_typeArticle` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 	
 --
 -- AUTO_INCREMENT pour la table `t_emplacement`
