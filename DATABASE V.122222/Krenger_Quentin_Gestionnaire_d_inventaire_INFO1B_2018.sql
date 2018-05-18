@@ -55,22 +55,22 @@ CREATE TABLE IF NOT EXISTS `t_personne_numero` (
 -- Contenu de la table `t_personne_numero`
 INSERT INTO `t_personne_numero` (`id_personne_numero`,`FK_personne`,`FK_numero`) VALUES
 (1,1,1),
-(2,1,7),
-(3,4,1),
-(4,5,3),
-(5,4,6),
-(6,9,2),
+(2,2,7),
+(3,3,1),
+(4,4,3),
+(5,5,6),
+(6,6,2),
 (7,7,5),
-(8,6,13),
-(9,12,15),
-(10,15,16),
-(11,19,7),
-(12,11,10),
-(13,12,11),
-(14,8,12),
-(15,4,15),
-(16,3,5),
-(17,2,1);
+(8,8,13),
+(9,9,15),
+(10,10,16),
+(11,11,7),
+(12,12,10),
+(13,13,11),
+(14,14,12),
+(15,15,15),
+(16,16,5),
+(17,17,1);
 
 -- ---------------------------------------------------------------------
 
@@ -78,7 +78,7 @@ INSERT INTO `t_personne_numero` (`id_personne_numero`,`FK_personne`,`FK_numero`)
 
 CREATE TABLE IF NOT EXISTS `t_numero` (
 	`id_numero` INT(11) NOT NULL,
-	`Numero_nume` VARCHAR(12) COLLATE utf8_bin NOT NULL,
+	`Numero_nume` VARCHAR(15) COLLATE utf8_bin NOT NULL,
 	`FK_typeNumero` INT(11) NOT NULL
 )	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -151,21 +151,21 @@ CREATE TABLE IF NOT EXISTS `t_personne_mail` (
 INSERT INTO `t_personne_mail` (`id_personne_mail`,`FK_personne`,`FK_mail`) VALUES
 (1,1,1),
 (2,2,7),
-(3,4,1),
-(4,5,3),
-(5,4,6),
-(6,9,2),
+(3,3,1),
+(4,4,3),
+(5,5,6),
+(6,6,2),
 (7,7,5),
-(8,6,13),
-(9,12,15),
-(10,15,16),
-(11,19,7),
-(12,11,10),
-(13,12,11),
-(14,8,12),
-(15,4,15),
-(16,3,5),
-(17,2,1);
+(8,8,13),
+(9,9,15),
+(10,10,16),
+(11,11,7),
+(12,12,10),
+(13,13,11),
+(14,14,12),
+(15,15,15),
+(16,16,5),
+(17,17,1);
 
 
 -- ---------------------------------------------------------------------
