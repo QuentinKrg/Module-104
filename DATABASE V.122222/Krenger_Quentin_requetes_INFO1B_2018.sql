@@ -57,3 +57,20 @@ inner join t_typearticle ta ON ta.id_typeArticle = a.FK_typeArticle;
 
 -- --------------------------------------------------------------------------
 
+
+--
+-- Requêtes d'agrégation 
+--
+
+-- AVG
+select avg(year(current_date)- year(Garantie_arti))-(right(current_date,5)) as inutilemaisdrole
+from t_article;
+-- COUNT
+select count(Garantie_arti) from t_article;
+-- MAX
+select max(Garantie_arti) from t_article;
+-- MIN
+select min(Garantie_arti) from t_article;
+-- SUM (cela ne sert a rien mais c'est pour faire la démo :P)
+select sum(year(current_date)- year(Garantie_arti))-(right(current_date,5))
+from t_article;
