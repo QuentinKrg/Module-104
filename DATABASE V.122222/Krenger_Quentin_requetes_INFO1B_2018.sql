@@ -17,21 +17,106 @@ SELECT * FROM t_personne WHERE User_pers IS NULL ORDER BY `User_pers` DESC;
 SELECT * FROM t_personne WHERE User_pers IS NOT NULL ORDER BY `User_pers` DESC;
 
 --
--- Selection des données voulues depuis `t_personne` jusqu'à `t_typeMail` et `t_typeNumero`
+-- Requêtes utiles pour la classe : "ClaGestionUserMailNumero" du projet java 
 --
 
-select p.Nom_pers, p.Prenom_pers, p.User_pers, m.Mail_mail, tm.Type_typeM, n.Numero_nume, tn.Type_typeN 
-from t_personne p
+-- Requêtes pour afficher dans les JList :
 
--- Récupération du mail
-left join t_personne_mail pm ON pm.FK_personne = p.id_personne
-inner join t_mail m ON m.id_mail = pm.FK_mail
-inner join t_typeMail tm ON m.FK_typeMail = tm.id_typeMail
+SELECT DISTINCT id_personne, User_pers 
+FROM t_personne T1
+LEFT JOIN t_personne_mail pm ON pm.FK_personne = T1.id_personne
+INNER JOIN t_mail T5 ON T5.id_mail = pm.FK_mail
+LEFT JOIN t_personne_numero T6 on T6.FK_personne = T1.id_personne
+INNER JOIN t_numero T7 on T7.id_numero = T6.FK_numero;
 
--- Récupération du numéro de téléphone
-left join t_personne_numero pn ON pn.FK_personne = p.id_personne
-inner join t_numero n ON n.id_numero = pn.FK_numero
-inner join t_typeNumero tn ON n.FK_typeNumero = tn.id_typeNumero;
+SELECT DISTINCT User_pers, Mail_mail 
+FROM t_personne T1
+LEFT JOIN t_personne_mail T4 ON T4.FK_personne = T1.id_personne
+INNER JOIN t_mail T5 ON T5.id_mail = T4.FK_mail
+WHERE id_personne = 1;
+
+SELECT DISTINCT User_pers, Numero_nume FROM t_personne T1
+LEFT JOIN t_personne_numero T4 ON T4.FK_personne = T1.id_personne
+INNER JOIN t_numero T5 ON T5.id_numero = T4.FK_numero
+WHERE id_personne = 1; 
+
+-- Requêtes pour supprimer 
+
+SELECT id_personne_numero 
+FROM t_personne_numero WHERE FK_personne = 1 AND FK_numero = (SELECT id_numero FROM t_numero WHERE Numero_nume LIKE 2);
+
+DELETE FROM `t_personne_numero` WHERE `t_personne_numero`.`id_personne_numero` = 1;
+
+SELECT id_personne_mail FROM t_personne_mail WHERE FK_personne = 1 AND FK_mail = (SELECT id_mail FROM t_mail WHERE Mail_mail LIKE 1);
+
+DELETE FROM `t_personne_mail` WHERE `t_personne_mail`.`id_personne_mail` = 1;
+
+--
+-- Requêtes utiles pour la classe : "ClaSelectMail" du projet java
+--
+
+-- Remplir la JList
+
+SELECT id_mail, Mail_mail FROM t_mail WHERE Mail_mail <> '';
+
+-- Compter les éventuels doublons
+
+SELECT count(*) AS NbDblCategorie  FROM t_personne_mail WHERE FK_personne = 1 AND FK_mail = ( SELECT id_mail FROM t_mail WHERE Mail_mail COLLATE utf8_unicode_ci LIKE 1);
+
+-- Insertion de la correspondance dans la table intermédiaire
+
+INSERT INTO t_personne_mail (id_personne_mail, FK_personne, FK_mail)
+VALUES (NULL, 1,( SELECT id_mail FROM t_mail WHERE Mail_mail COLLATE utf8_unicode_ci LIKE 1));
+
+-- --------------------------------------------------------------------------
+
+--
+-- Requêtes utiles pour la classe : "ClaSelectNumero" du projet java
+--
+
+-- Remplir la JList
+
+SELECT id_numero, Numero_nume COLLATE utf8_unicode_ci as Numero_nume  FROM t_numero ORDER BY Numero_nume COLLATE utf8_unicode_ci ASC;
+
+-- Compter les éventuels doublons
+
+SELECT count(*) AS NbDblSc  FROM t_personne_numero WHERE FK_personne = 1 AND FK_numero = ( SELECT id_numero FROM t_numero WHERE Numero_nume COLLATE utf8_unicode_ci LIKE 1);
+
+
+
+-- --------------------------------------------------------------------------
+
+--
+-- Requêtes utiles pour la classe : "ClaGestionMail" du projet java
+--
+
+-- Insertion dans la table mail
+INSERT INTO t_mail (Mail_mail,FK_typeMail) VALUES (1,1);
+
+SELECT *  FROM t_mail WHERE Mail_mail COLLATE utf8_unicode_ci LIKE 1;
+
+-- Selection de tous ce dont nous avons besoin
+SELECT id_mail, Mail_mail COLLATE utf8_unicode_ci as Mail_mail  FROM t_mail ORDER BY Mail_mail COLLATE utf8_unicode_ci ASC;
+
+-- Suppression dans la table mail
+DELETE FROM t_mail WHERE id_mail = 1;
+
+-- --------------------------------------------------------------------------
+
+--
+-- Requêtes utiles pour la classe : "ClaGestionNumero" du projet java
+--
+
+-- Insertion dans la table mail
+INSERT INTO t_numero (Numero_nume,FK_typeNumero) VALUES (1,1);
+
+SELECT *  FROM t_numero WHERE Numero_nume COLLATE utf8_unicode_ci LIKE 1;
+
+-- Selection de tous ce dont nous avons besoin
+SELECT id_numero, Numero_nume COLLATE utf8_unicode_ci as Numero_nume  FROM t_numero ORDER BY Numero_nume COLLATE utf8_unicode_ci ASC;
+
+-- Suppression dans la table mail
+DELETE FROM t_numero WHERE id_numero = 1;
 
 -- --------------------------------------------------------------------------
 
