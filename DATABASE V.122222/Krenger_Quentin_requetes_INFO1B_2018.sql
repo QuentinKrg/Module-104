@@ -47,42 +47,9 @@ FROM t_personne_numero WHERE FK_personne = 1 AND FK_numero = (SELECT id_numero F
 
 DELETE FROM `t_personne_numero` WHERE `t_personne_numero`.`id_personne_numero` = 1;
 
-SELECT id_personne_mail FROM t_personne_mail WHERE FK_personne = 1 AND FK_mail = (SELECT id_mail FROM t_mail WHERE Mail_mail LIKE 1);
+
 
 DELETE FROM `t_personne_mail` WHERE `t_personne_mail`.`id_personne_mail` = 1;
-
---
--- Requêtes utiles pour la classe : "ClaSelectMail" du projet java
---
-
--- Remplir la JList
-
-SELECT id_mail, Mail_mail FROM t_mail WHERE Mail_mail <> '';
-
--- Compter les éventuels doublons
-
-SELECT count(*) AS NbDblCategorie  FROM t_personne_mail WHERE FK_personne = 1 AND FK_mail = ( SELECT id_mail FROM t_mail WHERE Mail_mail COLLATE utf8_unicode_ci LIKE 1);
-
--- Insertion de la correspondance dans la table intermédiaire
-
-INSERT INTO t_personne_mail (id_personne_mail, FK_personne, FK_mail)
-VALUES (NULL, 1,( SELECT id_mail FROM t_mail WHERE Mail_mail COLLATE utf8_unicode_ci LIKE 1));
-
--- --------------------------------------------------------------------------
-
---
--- Requêtes utiles pour la classe : "ClaSelectNumero" du projet java
---
-
--- Remplir la JList
-
-SELECT id_numero, Numero_nume COLLATE utf8_unicode_ci as Numero_nume  FROM t_numero ORDER BY Numero_nume COLLATE utf8_unicode_ci ASC;
-
--- Compter les éventuels doublons
-
-SELECT count(*) AS NbDblSc  FROM t_personne_numero WHERE FK_personne = 1 AND FK_numero = ( SELECT id_numero FROM t_numero WHERE Numero_nume COLLATE utf8_unicode_ci LIKE 1);
-
-
 
 -- --------------------------------------------------------------------------
 
