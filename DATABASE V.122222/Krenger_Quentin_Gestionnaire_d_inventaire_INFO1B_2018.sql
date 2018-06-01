@@ -78,7 +78,7 @@ INSERT INTO `t_personne_numero` (`id_personne_numero`,`FK_personne`,`FK_numero`)
 
 CREATE TABLE IF NOT EXISTS `t_numero` (
 	`id_numero` INT(11) NOT NULL,
-	`Numero_nume` VARCHAR(15) COLLATE utf8_bin NOT NULL,
+	`Numero_nume` VARCHAR(16) COLLATE utf8_bin NOT NULL,
 	`FK_typeNumero` INT(11) NOT NULL
 )	ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
